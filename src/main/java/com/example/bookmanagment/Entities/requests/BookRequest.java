@@ -1,6 +1,7 @@
 package com.example.bookmanagment.Entities.requests;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.Instant;
@@ -10,6 +11,9 @@ public class BookRequest {
     @NotBlank(message = "title is mandatory")
     private String title;
 
+    @NotNull()
+    private int quantity;
+
     @NotBlank(message = "Author name is mandatory")
     private String author;
 
@@ -18,8 +22,6 @@ public class BookRequest {
 
     @NotBlank(message = "Category is mandatory")
     private long categoryId;
-
-    private Boolean isAv;
 
     private String shortDescription;
 

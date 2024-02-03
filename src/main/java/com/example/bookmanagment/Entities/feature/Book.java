@@ -31,8 +31,6 @@ public class Book  {
     @Column
     private String shortDescription;
 
-    @Column(nullable = false)
-    private boolean isAvailable;
 
     @Column
     private Instant publishDate;

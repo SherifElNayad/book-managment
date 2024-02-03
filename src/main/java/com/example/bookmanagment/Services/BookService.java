@@ -28,8 +28,7 @@ public class BookService {
         Book book = new Book();
         book.setAuthor(request.getAuthor());
         book.setTitle(request.getTitle());
-        book.setAvailable(true);
-        book.setQuantity(1);
+        book.setQuantity(request.getQuantity());
         book.setShortDescription(request.getShortDescription());
         book.setPublishDate(request.getPublishDate());
         book.setCategory(category);
@@ -43,8 +42,8 @@ public class BookService {
                 .orElseThrow(()->new BadRequestAlertException(ErrorCodes.NOT_FOUND_ERROR,"This Book does not exist"));
         book.setAuthor(request.getAuthor());
         book.setTitle(request.getTitle());
+        book.setQuantity(request.getQuantity());
         book.setShortDescription(request.getShortDescription());
-        book.setAvailable(request.getIsAv());
         book.setPublishDate(request.getPublishDate());
         book.setCategory(category);
         bookRepository.save(book);
@@ -68,10 +67,6 @@ public class BookService {
 
     public void decrementQuantity(Book book) {
         book.setQuantity(book.getQuantity()-1);
-        if(book.getQuantity() == 0)
-        {
-            book.setAvailable(false);
-        }
         bookRepository.save(book);
     }
 

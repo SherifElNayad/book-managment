@@ -24,9 +24,9 @@ public class BorrowController {
     }
 
     @PutMapping("/{borrowId}")
-    @PreAuthorize("hasAnyRole('ADMIN')")
-    public void editRequest(@RequestBody BorrowRequestBody request, @PathVariable long borrowId) {
-        borrowService.editRequest(request, borrowId);
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public void editRequest(@RequestBody BorrowRequestBody request, @PathVariable long borrowId,Principal principal) {
+        borrowService.editRequest(request, borrowId,principal);
     }
 
     @PostMapping("approve/{borrowId}")
@@ -43,8 +43,8 @@ public class BorrowController {
 
     @DeleteMapping("{borrowId}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public void deleteBorrow(@PathVariable long borrowId) {
-        borrowService.deleteRequest(borrowId);
+    public void deleteBorrow(@PathVariable long borrowId,Principal principal) {
+        borrowService.deleteRequest(borrowId,principal);
     }
 
     @GetMapping("/{borrowId}")
