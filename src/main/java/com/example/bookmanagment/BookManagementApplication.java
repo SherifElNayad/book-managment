@@ -16,38 +16,42 @@ public class BookManagementApplication {
         SpringApplication.run(BookManagementApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner commandLineRunner(AuthenticationService authenticationService) {
-        return args -> {
-            var adminAuth = AuthenticationRequest.builder()
-                    .email("Admin@Admin.com")
-                    .password("1234")
-                    .build();
-            var userAuth = AuthenticationRequest.builder()
-                    .email("User@User.com")
-                    .password("1234")
-                    .build();
-            if(authenticationService.authenticate(adminAuth) != null){
-                System.out.println("Admin token :" + authenticationService.authenticate(adminAuth).getToken() );
-                System.out.println("User token :" + authenticationService.authenticate(userAuth).getToken() );
-                return;
-            }
-            var admin = RegisterRequest.builder()
-                    .firstName("Admin")
-                    .email("Admin@Admin.com")
-                    .password("1234")
-                    .role(Role.ADMIN)
-                    .build();
-            System.out.println("Admin token :" + authenticationService.register(admin).getToken() );
-
-            var user = RegisterRequest.builder()
-                    .firstName("user")
-                    .email("user@user.com")
-                    .password("1234")
-                    .role(Role.USER)
-                    .build();
-            System.out.println("User token :" + authenticationService.register(user).getToken() );
-
-        };
-    }
+//    @Bean
+//    public CommandLineRunner commandLineRunner(AuthenticationService authenticationService) {
+////        return args -> {
+////            var adminAuth = AuthenticationRequest.builder()
+////                    .email("Admin@Admin.com")
+////                    .password("1234")
+////                    .build();
+////            var userAuth = AuthenticationRequest.builder()
+////                    .email("User@User.com")
+////                    .password("1234")
+////                    .build();
+////            try {
+////                if (authenticationService.authenticate(adminAuth) != null) {
+////                    System.out.println("Admin token :" + authenticationService.authenticate(adminAuth).getToken());
+////                    System.out.println("User token :" + authenticationService.authenticate(userAuth).getToken());
+////                    return;
+////                }
+////            } catch (Exception ex) {
+////                return;
+////            }
+//            var admin = RegisterRequest.builder()
+//                    .firstName("Admin")
+//                    .email("Admin@Admin.com")
+//                    .password("1234")
+//                    .role(Role.ADMIN)
+//                    .build();
+//            System.out.println("Admin token :" + authenticationService.register(admin).getToken());
+//
+//            var user = RegisterRequest.builder()
+//                    .firstName("user")
+//                    .email("user@user.com")
+//                    .password("1234")
+//                    .role(Role.USER)
+//                    .build();
+//            System.out.println("User token :" + authenticationService.register(user).getToken());
+//
+//        return null;
+//    }
 }
