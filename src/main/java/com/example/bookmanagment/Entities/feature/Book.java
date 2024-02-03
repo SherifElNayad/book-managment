@@ -1,11 +1,11 @@
 package com.example.bookmanagment.Entities.feature;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.time.Instant;
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @Table(name = "book", schema = "book-management")
 @Entity
-public class Book implements Serializable {
+public class Book  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,7 +40,8 @@ public class Book implements Serializable {
     @ManyToOne
     private Category category;
 
-    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "book", orphanRemoval = true)
+    @JsonIgnore
     private List<BorrowRequest> borrowRequest;
 
 

@@ -68,6 +68,10 @@ public class BookService {
 
     public void decrementQuantity(Book book) {
         book.setQuantity(book.getQuantity()-1);
+        if(book.getQuantity() == 0)
+        {
+            book.setAvailable(false);
+        }
         bookRepository.save(book);
     }
 

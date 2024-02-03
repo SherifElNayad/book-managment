@@ -15,8 +15,6 @@ import org.springframework.stereotype.Service;
 import java.security.Principal;
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-
 @Service
 @RequiredArgsConstructor
 @Slf4j
