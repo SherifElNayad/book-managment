@@ -14,7 +14,7 @@ import java.time.Instant;
 @Data
 @Table(name = "borrow_request", schema = "book-management")
 @Entity
-public class BorrowRequest implements Serializable {
+public class BorrowRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,9 +26,9 @@ public class BorrowRequest implements Serializable {
     private Instant endDate;
     @Column
     private boolean isApproved;
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name = "book_id")
     private Book book;
-
 
 
 }

@@ -67,16 +67,19 @@ public class BorrowService {
     public void handleBorrowRequest(long borrowId, boolean borrowed) {
         BorrowRequest borrowRequest = borrowRepository.getReferenceById(borrowId);
         if (borrowed) {
-            Book book = borrowRequest.getBook();
+                Book book = borrowRequest.getBook();
             if (book.getQuantity() > 0) {
                 bookService.decrementQuantity(book);
                 log.info("Borrow request has been Accepted");
                 borrowRequest.setApproved(true);
+                borrowRepository.save(borrowRequest);
             } else {
                 log.info("Book '{}' quantity is 0", book.getTitle());
                 throw new BadRequestAlertException(ErrorCodes.OWNERSHIP_ERROR,"Book is not available for borrowing");
             }
         }
+        throw new BadRequestAlertException(ErrorCodes.OWNERSHIP_ERROR,"Book Borrow Request Rejected");
+
     }
 
     public void deleteRequest(long borrowId) {

@@ -40,7 +40,10 @@ public class Book implements Serializable {
     @ManyToOne
     private Category category;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<BorrowRequest> borrowRequest;
 
 
