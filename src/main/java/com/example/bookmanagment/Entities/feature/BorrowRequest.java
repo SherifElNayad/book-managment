@@ -18,14 +18,19 @@ public class BorrowRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
     @Column(nullable = false)
     private Instant startDate;
+
     @Column(nullable = false)
     private Instant endDate;
+
     @Column
     private boolean isApproved;
+
     @ManyToOne()
     @JoinColumn(name = "book_id")
     private Book book;
