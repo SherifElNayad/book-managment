@@ -44,13 +44,12 @@ Manages borrow requests for books. Users can create, view, update, and delete bo
 
 - Leverage the BorrowRequest APIs in the Postman Collection for CRUD operations on borrow requests.
 
-  **User Permissions:**
+- **Admin** can approve and reject requests on book that are made by users.
+  
+- **User Permissions:**
     - Users can create a borrow request.
     - Users can view their borrow requests.
     - Users can delete their own borrow requests.
-
-- Use the provided APIs for approving and rejecting borrow requests.
-
 
 ## Installation and Setup
 
