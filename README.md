@@ -2,10 +2,10 @@
 
 ## Overview
 
-This project is a Book Management Application that allows users to manage categories, books, and borrow requests. It consists of four modules: Auth, Category, Book, and BorrowRequest.
+This project is a Book Management Application that allows users to manage categories of books and make borrow requests for these books. It consists of four modules: Auth, Category, Book, and BorrowRequest.
 
 ### Auth Module
-Responsible for user authentication. It includes APIs for user registration and authentication. The Postman collection for these APIs can be found in the Postman Collection section.
+Responsible for user authentication. It includes APIs for user registration and authentication.
 
 ### Category Module
 Manages categories for books. It provides CRUD operations for managing book categories.
@@ -25,7 +25,7 @@ Manages borrow requests for books. Users can create, view, update, and delete bo
 - Use the provided Register API in the Postman Collection.
 - Register a user as a normal user or an admin.
 - Retrieve the authentication token from the response.
-- Please note that the Token may expire in a configured time , if so you will need to rerun the authenticate API for the required user and put the returned token value to the Authorization Header of type Bearer type in psostman
+- Please note that the Token may expire in a configured time , if so you will need to rerun the authenticate API for the required user and put the returned token value to the Authorization Header of type Bearer type in postman request
 #### Authentication:
 
 - Use the obtained token in the Authorization header (Bearer Token) for subsequent requests.
@@ -38,15 +38,15 @@ Manages borrow requests for books. Users can create, view, update, and delete bo
 
 - Utilize the Book APIs in the Postman Collection for CRUD operations on books.
 
-  **Note: Users can only view books.**
+  **Note: Normal users can only view books and the whole CRUD operation is done the by the admin user.**
 
 ### BorrowRequest Module
 
 - Leverage the BorrowRequest APIs in the Postman Collection for CRUD operations on borrow requests.
 
-- **Admin** can approve and reject requests on book that are made by users.
+- **Admin** can approve and reject requests on book that are made by normal users.
   
-- **User Permissions:**
+- **Normal User Permissions:**
     - Users can create a borrow request.
     - Users can view their borrow requests.
     - Users can delete their own borrow requests.
