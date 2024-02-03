@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -38,5 +39,9 @@ public class Book implements Serializable {
 
     @ManyToOne
     private Category category;
+
+    @OneToMany(mappedBy = "book")
+    private List<BorrowRequest> borrowRequest;
+
 
 }

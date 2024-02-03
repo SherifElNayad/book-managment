@@ -31,7 +31,7 @@ public class BorrowService {
                 .orElseThrow(() -> new BadRequestAlertException(ErrorCodes.AUTHENTICATION_ERROR, "You Must Be Authenticated"));
         Book book = bookRepository.findById(request.getBookId())
                 .orElseThrow(() -> new BadRequestAlertException(ErrorCodes.NOT_FOUND_ERROR,"This Category does not exist"));
-        if (book.getQuantity() > 0) {
+            if (book.getQuantity() > 0 && borrowRepository.findByBookAndUser(book, user).isEmpty()) {
             BorrowRequest borrowRequest = new BorrowRequest();
             borrowRequest.setApproved(false);
             borrowRequest.setBook(book);

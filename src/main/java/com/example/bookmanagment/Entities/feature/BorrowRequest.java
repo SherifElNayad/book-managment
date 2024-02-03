@@ -26,7 +26,7 @@ public class BorrowRequest implements Serializable {
     private Instant endDate;
     @Column
     private boolean isApproved;
-    @OneToOne
+    @ManyToOne
     private Book book;
 
 
